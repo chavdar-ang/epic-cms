@@ -4,8 +4,9 @@
   import Sidebar from "../components/Sidebar.svelte";
 </script>
 
-<div>
-    <Sidebar />
-    <Nav />
-</div>
+<Nav />
+
+<h2>Entities</h2>
+<Sidebar />
+
 <slot />
