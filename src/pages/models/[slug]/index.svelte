@@ -2,8 +2,6 @@
   import models from "../../../database/schema";
   import { params } from "@roxi/routify";
 
-  console.log('params', $params);
-
   $: slug = $params.slug;
   $: model = models[slug];
 

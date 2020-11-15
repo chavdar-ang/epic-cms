@@ -3,8 +3,14 @@
   import Nav from "../components/Nav.svelte";
 </script>
 
-<Nav />
+<header>
+  <div class="container">
+    <Nav />
+  </div>
+</header>
 
-<h2>Main layout</h2>
-
-<slot />
+<main>
+  <div class="container">  
+    <slot />
+  </div>
+</main>
