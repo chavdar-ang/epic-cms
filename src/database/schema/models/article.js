@@ -11,6 +11,9 @@ export default {
         timestamps: true,
     },
     attributes: {
+        _id: {
+            type: "ID"
+        },
         title: {
             type: "string"
         },

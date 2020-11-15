@@ -6,10 +6,6 @@
 </script>
 
 <style>
-  .side-nav {
-    /** */
-  }
-
   ul {
     list-style: none;
     margin: 0;

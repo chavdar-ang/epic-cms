@@ -1,5 +1,5 @@
 export default {
-    collection: "articles",
+    collection: "users",
     info: {
         name: "user",
         description: "A description about the model."
@@ -10,6 +10,9 @@ export default {
         timestamps: true,
     },
     attributes: {
+        _id: {
+            type: "ID"
+        },
         name: {
             type: "string"
         },
