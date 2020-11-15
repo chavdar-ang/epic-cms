@@ -16,4 +16,8 @@
     <li>
         <a href="{$url('./about')}" class:current={$isActive('/about')}>About</a>
     </li>
+
+    <li>
+        <a href="{$url('./models')}" class:current={$isActive('/models')}>Models</a>
+    </li>
 </ul>
