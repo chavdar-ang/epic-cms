@@ -7,7 +7,7 @@
 </script>
 
 <style>
-  nav {
+  .main-nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -23,7 +23,7 @@
   }
 </style>
 
-<nav>
+<nav class="main-nav">
   <ul>
     <li>
       <a href={$url('./index')} class:current={$isActive('./index')}>Home</a>

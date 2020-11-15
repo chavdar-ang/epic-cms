@@ -13,6 +13,10 @@ header {
 	background-color: #fff;
 }
 
+nav {
+	background-color: #fff;
+}
+
 li .current {
 	color: cornflowerblue;
 }
