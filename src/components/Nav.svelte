@@ -1,6 +1,5 @@
 <script>
   import { url, isActive } from "@roxi/routify";
-  // import { route, layout, page } from "@roxi/routify";
   import { page } from "@roxi/routify";
 
   $: path = $page.path;
