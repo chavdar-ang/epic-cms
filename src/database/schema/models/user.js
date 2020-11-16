@@ -1,5 +1,6 @@
 export default {
     collection: "users",
+    slug: "user",
     info: {
         name: "user",
         description: "A description about the model."

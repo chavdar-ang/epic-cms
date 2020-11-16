@@ -1,5 +1,6 @@
 <script>
   import Row from "./Row.svelte";
+
   export let items, model;
 </script>
 
@@ -28,10 +29,12 @@
     {#each Object.keys(model.attributes) as th}
       <th>{th}</th>
     {/each}
+    <th>Edit</th>
+    <th>Delete</th>
   </tr>
 
   {#each items as item}
-    <Row attributes={Object.keys(model.attributes)} {item} />
+    <Row {model} {item} />
   {/each}
 </table>
 <hr />

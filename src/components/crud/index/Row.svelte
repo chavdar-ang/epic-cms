@@ -1,9 +1,11 @@
 <script>
-  export let item, attributes;
+  export let item, model;
 </script>
 
 <tr>
-  {#each attributes as td}
+  {#each Object.keys(model.attributes) as td}
     <td>{item[td]}</td>
   {/each}
+  <td><a href="/models/{model.slug}/update/{item['_id']}"> Edit</a></td>
+  <td>Delete</td>
 </tr>
