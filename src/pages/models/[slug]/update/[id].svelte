@@ -9,7 +9,7 @@
   $: item = seeds[$params.slug][$params.id];
 
   // Components
-  import UpdateComponent from "../../../../components/crud/update/UpdateComponent.svelte";
+  import UpdateComponent from "./_components/UpdateComponent.svelte";
 
   export let id;
 </script>

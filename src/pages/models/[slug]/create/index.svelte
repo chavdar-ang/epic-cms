@@ -5,7 +5,7 @@
   $: model = models[$params.slug];
 
   // Components
-  import CreateComponent from "../../../../components/crud/create/CreateComponent.svelte";
+  import CreateComponent from "./_components/CreateComponent.svelte";
   export let slug;
 </script>
 

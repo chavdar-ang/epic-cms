@@ -4,7 +4,7 @@
   import { params } from "@roxi/routify";
 
   // Components
-  import IndexComponent from "../../../components/crud/index/IndexComponent.svelte";
+  import IndexComponent from "./_components/IndexComponent.svelte";
 
   $: model = models[$params.slug];
   $: items = seeds[$params.slug];
