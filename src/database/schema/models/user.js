@@ -15,7 +15,7 @@ export default {
             type: "ID"
         },
         name: {
-            type: "string"
+            type: "input"
         },
         email: {
             type: "email"

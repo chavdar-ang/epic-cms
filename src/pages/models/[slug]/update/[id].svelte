@@ -16,6 +16,8 @@
 
 <h2>{slug} update</h2>
 
+<h3>ID: {id}</h3>
+
 <UpdateComponent {model} {item} />
 
 <button>Submit</button>

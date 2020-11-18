@@ -10,5 +10,7 @@
 </script>
 
 <h2>{slug} create</h2>
-<CreateComponent {model}/>
+
+<CreateComponent {model} />
+
 <button>Submit</button>

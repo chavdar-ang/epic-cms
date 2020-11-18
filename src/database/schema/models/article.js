@@ -16,10 +16,10 @@ export default {
             type: "ID"
         },
         title: {
-            type: "string"
+            type: "input"
         },
         body: {
-            type: "richtext"
+            type: "textarea"
         }
     }
 }
