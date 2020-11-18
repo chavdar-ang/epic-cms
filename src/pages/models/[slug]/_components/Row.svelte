@@ -1,5 +1,7 @@
 <script>
   export let item, model;
+
+  console.log(item);
 </script>
 
 <tr>

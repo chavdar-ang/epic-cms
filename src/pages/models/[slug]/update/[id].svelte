@@ -6,7 +6,7 @@
   $: model = models[$params.slug];
   $: slug = $params.slug;
 
-  $: item = seeds[$params.slug][$params.id];
+  $: item = seeds[$params.slug].find(row => row._id == $params.id);
 
   // Components
   import UpdateComponent from "./_components/UpdateComponent.svelte";
