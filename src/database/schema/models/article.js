@@ -10,7 +10,7 @@ export default {
     fields: {
         _id: {
             name: "ID",
-            type: "ID"
+            type: "id"
         },
         title: {
             name: "Title",

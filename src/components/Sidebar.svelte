@@ -1,8 +1,6 @@
 <script>
   import { url, isActive } from "@roxi/routify";
   import models from "../database/schema";
-
-  // console.log($url('/test'));
 </script>
 
 <style>
