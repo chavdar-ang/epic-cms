@@ -1,23 +1,28 @@
 export default {
-    collection: "users",
-    slug: "user",
-    info: {
-        name: "user",
-        description: "A description about the model."
+    settings: {
+        name: "User",
+        slug: "user",
+        collection: "users",
+        description: "A description about the model.",
+        increments: true,
+        timestamps: true,
     },
     options: {
         // maybe
         increments: true,
         timestamps: true,
     },
-    attributes: {
+    fields: {
         _id: {
+            name: "ID",
             type: "ID"
         },
         name: {
+            name: "Name",
             type: "input"
         },
         email: {
+            name: "Email",
             type: "email"
         }
     }

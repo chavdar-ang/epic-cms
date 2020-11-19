@@ -25,7 +25,7 @@
 <hr />
 <table>
   <tr>
-    {#each Object.keys(model.attributes) as th}
+    {#each Object.keys(model.fields) as th}
       <th>{th}</th>
     {/each}
     <th>Edit</th>

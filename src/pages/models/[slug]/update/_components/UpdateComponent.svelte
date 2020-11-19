@@ -1,5 +1,8 @@
 <script>
-    export let model, item;
+  import formComponents from "../../../../../components/form";
+
+  export let model, data;
+  const fields = model.fields;
 </script>
 
 <style>
@@ -8,10 +11,10 @@
 <h3>CRUD update component</h3>
 
 <div>
-  {#each Object.keys(model.attributes) as attribute}
+  {#each Object.keys(fields) as item}
     <div>
-      <label for={attribute}>{attribute}</label>
-      <input type="text" id={attribute} name={attribute} value="{item[attribute]}" />
+      <!-- Possible name of the thing -> Vanguard -->
+      <svelte:component this={formComponents[fields[item].type]} field={fields[item]} value={data[item]} />
     </div>
   {/each}
 </div>

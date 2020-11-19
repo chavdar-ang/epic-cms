@@ -12,9 +12,9 @@
   export let slug;
 </script>
 
-<h1>{model.info.name}</h1>
+<h1>{model.settings.name}</h1>
 
 <div>
   <IndexComponent {items} {model} />
-  <a href={`./${slug}/create`}>Create new {slug}</a>
+  <a href={`./${slug}/create`}>Create new {model.settings.name}</a>
 </div>

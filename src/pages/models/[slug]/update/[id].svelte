@@ -6,7 +6,7 @@
   $: model = models[$params.slug];
   $: slug = $params.slug;
 
-  $: item = seeds[$params.slug].find(row => row._id == $params.id);
+  $: data = seeds[$params.slug].find(row => row._id == $params.id);
 
   // Components
   import UpdateComponent from "./_components/UpdateComponent.svelte";
@@ -18,6 +18,6 @@
 
 <h3>ID: {id}</h3>
 
-<UpdateComponent {model} {item} />
+<UpdateComponent {model} {data} />
 
 <button>Submit</button>
