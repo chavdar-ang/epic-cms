@@ -1,18 +1,18 @@
 <script>
   import formComponents from "../../../../../components/form";
+  import { inputs } from "../../../../../stores";
 
-  export let model, data;
+  export let model;
   const fields = model.fields;
 </script>
 
 <div>
-  {#each Object.keys(fields) as item}
+  {#each Object.keys(fields) as key}
     <div>
-      <!-- Possible name of the thing -> Vanguard -->
       <svelte:component
-        this={formComponents[fields[item].type]}
-        field={fields[item]}
-        value={data[item]} />
+        this={formComponents[fields[key].type]}
+        field={fields[key]}
+        {key} />
     </div>
   {/each}
 </div>

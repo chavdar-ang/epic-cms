@@ -1,8 +1,8 @@
 <script>
-  import models from "../../../../database/schema";
+  import { schema } from "../../../../stores";
   import { params } from "@roxi/routify";
 
-  $: model = models[$params.slug];
+  $: model = $schema[$params.slug];
 
   // Components
   import CreateComponent from "./_components/CreateComponent.svelte";
@@ -12,5 +12,3 @@
 <h2>{slug} create</h2>
 
 <CreateComponent {model} />
-
-<button>Submit</button>

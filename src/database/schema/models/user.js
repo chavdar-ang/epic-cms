@@ -3,27 +3,30 @@ export default {
         name: "User",
         slug: "user",
         collection: "users",
+        uid: "_id",
         description: "A description about the model.",
         increments: true,
         timestamps: true,
     },
-    options: {
-        // maybe
-        increments: true,
-        timestamps: true,
-    },
     fields: {
-        _id: {
-            name: "ID",
-            type: "id"
-        },
         name: {
             name: "Name",
-            type: "input"
+            type: "input",
+            validation: {
+                min: 3,
+                max: 32,
+                required: true
+            }
         },
         email: {
             name: "Email",
-            type: "email"
+            type: "email",
+            validation: {
+                min: 8,
+                max: 64,
+                required: true,
+                unique: true
+            }
         }
     }
 }
