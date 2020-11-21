@@ -5,10 +5,12 @@
 
   export let model;
 
+  // console.log('model', model);
+
   const fields = model.fields;
 
   let submit = () => {
-    errors = validate();
+    errors = validate(model.settings.slug);
     console.log("submit");
   };
 
