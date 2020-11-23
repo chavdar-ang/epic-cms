@@ -10,10 +10,14 @@ const messages = {
 
 let renderMessage = (key, rule, value) => {
     let message = messages[rule].replace(':attribute', key);
-    return message.replace(`:${rule}`, value)
+    
+    // Replace values if present -> :min, :max, etc.
+    return message.replace(`:${rule}`, value);
 }
 
 let validate = (model) => {
+    // clean up errors
+    errors.update(err => ({}));
     let fields = get(schema)[model].fields;
 
     Object.keys(fields).map(key => {
@@ -22,9 +26,7 @@ let validate = (model) => {
 }
 
 let checkRules = (field, key) => {
-    let input = get(inputs)[field];
-
-    console.log('field input', input);
+    let input = get(inputs)[key];
 
     // Change field validation to field.rules maybe
     let rules = field.validation;
@@ -32,32 +34,32 @@ let checkRules = (field, key) => {
     let fieldMessages = [];
 
     Object.entries(rules).map(([rule, value]) => {
-        // console.log('rule: ', rule, 'val: ', value);
         if (!eval(rule)(input, value)) {
             fieldMessages.push(renderMessage(key, rule, value));
         }
     });
 
-    errors.update(err => Object.assign(err, {[key]: fieldMessages}));
-    console.log(get(errors));
+    if (fieldMessages.length > 0) {
+        errors.update(err => Object.assign(err, {[key]: fieldMessages}));
+    }
 }
 
 // Rules methods
-let required = (input) => {
+let required = (input = '') => {
     return input ? true : false;
 }
 
-let max = (input, max) => {
-    return input <= max;
+let min = (input = '', min) => {
+    return input.length >= min;
 }
 
-let min = (input, min) => {
-    return input >= min;
+let max = (input = '', max) => {
+    return input.length <= max;
 }
 
 let unique = (input) => {
+    // this is a little more complicated
     return false;
-    // return input >= min;
 }
 
 export default validate;

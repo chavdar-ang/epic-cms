@@ -13,18 +13,18 @@ export default {
             name: "Title",
             type: "input",
             validation: {
+                required: true,
                 min: 3,
-                max: 32,
-                required: true
+                max: 32
             }
         },
         body: {
             name: "Body",
             type: "textarea",
             validation: {
+                required: true,
                 min: 20,
-                max: 1000,
-                required: true
+                max: 1000
             }
         }
     }

@@ -5,19 +5,16 @@
 
   export let model;
 
-  // console.log('model', model);
-
   const fields = model.fields;
 
   let submit = () => {
+    console.log("errors", $errors);
     validate(model.settings.slug);
-    console.log($errors);
   };
 
   let onFocus = key => {
     delete $errors[key];
-    // Trigger rerendering
-    $errors = $errors;
+    $errors = $errors; // Trigger rerendering
   };
 </script>
 
@@ -37,8 +34,8 @@
         {key}
         on:focus={() => onFocus(key)} />
 
-      {#if $errors[key]}
-        <p class="error-message">{$errors[key][0]}</p>
+      {#if [key] in $errors}
+        <p class="error-message">{JSON.stringify($errors[key])}</p>
       {/if}
     </div>
   {/each}
