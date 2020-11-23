@@ -18,5 +18,3 @@
 <h2>{slug} update</h2>
 
 <UpdateComponent {model} />
-
-<button>Submit</button>

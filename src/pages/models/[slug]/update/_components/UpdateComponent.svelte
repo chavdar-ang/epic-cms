@@ -1,9 +1,22 @@
 <script>
   import formComponents from "../../../../../components/form";
-  import { inputs } from "../../../../../stores";
+  import { errors } from "../../../../../stores";
+  // import validate from "../../../../../lib/validator";
+  import validate from "../../../../../lib/validator";
 
   export let model;
+
   const fields = model.fields;
+
+  let submit = () => {
+    validate(model.settings.slug);
+  };
+
+  let onFocus = key => {
+    delete $errors[key];
+    // Trigger rerendering
+    $errors = $errors;
+  };
 </script>
 
 <div>
@@ -12,7 +25,13 @@
       <svelte:component
         this={formComponents[fields[key].type]}
         field={fields[key]}
-        {key} />
+        {key}
+        on:focus={() => onFocus(key)} />
+
+      {#if [key] in $errors}
+        <p class="error-message">{$errors[key][0]}</p>
+      {/if}
     </div>
   {/each}
+  <button on:click={() => submit()}> Submit</button>
 </div>

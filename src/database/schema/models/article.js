@@ -12,7 +12,7 @@ export default {
         title: {
             name: "Title",
             type: "input",
-            validation: {
+            rules: {
                 required: true,
                 min: 3,
                 max: 32
@@ -21,7 +21,7 @@ export default {
         body: {
             name: "Body",
             type: "textarea",
-            validation: {
+            rules: {
                 required: true,
                 min: 20,
                 max: 1000

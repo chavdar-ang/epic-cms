@@ -5,7 +5,8 @@ const messages = {
     required: 'The :attribute field is required.',
     min: 'The :attribute must be at least :min.',
     max: 'The :attribute may not be greater than :max.',
-    unique: 'The :attribute has already been taken.'
+    unique: 'The :attribute has already been taken.',
+    email: 'The :attribute must be a valid email address.'
 }
 
 let renderMessage = (key, rule, value) => {
@@ -17,7 +18,7 @@ let renderMessage = (key, rule, value) => {
 
 let validate = (model) => {
     // clean up errors
-    errors.update(err => ({}));
+    errors.update(err => []);
     let fields = get(schema)[model].fields;
 
     Object.keys(fields).map(key => {
@@ -28,8 +29,7 @@ let validate = (model) => {
 let checkRules = (field, key) => {
     let input = get(inputs)[key];
 
-    // Change field validation to field.rules maybe
-    let rules = field.validation;
+    let rules = field.rules;
 
     let fieldMessages = [];
 
@@ -45,21 +45,19 @@ let checkRules = (field, key) => {
 }
 
 // Rules methods
-let required = (input = '') => {
-    return input ? true : false;
-}
+let required = (input = '') => input ? true : false;
 
-let min = (input = '', min) => {
-    return input.length >= min;
-}
+let min = (input = '', min) => input.length >= min;
 
-let max = (input = '', max) => {
-    return input.length <= max;
+let max = (input = '', max) => input.length <= max;
+
+let email = (input = '') => {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(input)
 }
 
 let unique = (input) => {
     // this is a little more complicated
-    return false;
+    return true;
 }
 
 export default validate;

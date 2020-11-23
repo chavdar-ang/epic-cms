@@ -8,22 +8,15 @@
   const fields = model.fields;
 
   let submit = () => {
-    console.log("errors", $errors);
     validate(model.settings.slug);
   };
 
   let onFocus = key => {
     delete $errors[key];
-    $errors = $errors; // Trigger rerendering
+    // Trigger rerendering
+    $errors = $errors;
   };
 </script>
-
-<style>
-  .error-message {
-    font-size: 0.8em;
-    color: rgb(255, 87, 87);
-  }
-</style>
 
 <div>
   {#each Object.keys(fields) as key}
@@ -35,7 +28,7 @@
         on:focus={() => onFocus(key)} />
 
       {#if [key] in $errors}
-        <p class="error-message">{JSON.stringify($errors[key])}</p>
+        <p class="error-message">{$errors[key][0]}</p>
       {/if}
     </div>
   {/each}

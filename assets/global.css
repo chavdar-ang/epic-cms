@@ -20,3 +20,8 @@ nav {
 li .current {
 	color: cornflowerblue;
 }
+
+.error-message {
+	font-size: 0.8em;
+	color: rgb(255, 87, 87);
+}

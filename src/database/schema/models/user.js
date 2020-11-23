@@ -12,7 +12,7 @@ export default {
         name: {
             name: "Name",
             type: "input",
-            validation: {
+            rules: {
                 min: 3,
                 max: 32,
                 required: true
@@ -21,10 +21,11 @@ export default {
         email: {
             name: "Email",
             type: "email",
-            validation: {
+            rules: {
                 min: 8,
                 max: 64,
                 required: true,
+                email: true,
                 unique: true
             }
         }
