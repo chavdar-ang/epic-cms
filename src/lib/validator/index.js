@@ -34,13 +34,30 @@ let checkRules = (field, key) => {
     let fieldMessages = [];
 
     Object.entries(rules).map(([rule, value]) => {
-        if (!eval(rule)(input, value)) {
+        if (!callRule(rule)(input, value)) {
             fieldMessages.push(renderMessage(key, rule, value));
         }
     });
 
     if (fieldMessages.length > 0) {
         errors.update(err => Object.assign(err, {[key]: fieldMessages}));
+    }
+}
+
+let callRule = (rule) => {
+    switch (rule) {
+        case 'required':
+            return required;
+        case 'min':
+            return min;
+        case 'max':
+            return max;
+        case 'email':
+            return email;
+        case 'unique':
+            return unique;
+        default:
+            throw new Error(`Validation rule "${rule}" does not exist.`)
     }
 }
 
