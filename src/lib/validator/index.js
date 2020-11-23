@@ -9,7 +9,7 @@ let validate = (model) => {
     // console.log('test', fields);
 
     Object.keys(fields).map(key => {
-        checkRules(fields[key]);
+        checkRules(fields[key], key);
     });
 
     // for (const key in fields) {
@@ -21,23 +21,30 @@ let validate = (model) => {
     
 }
 
-let checkRules = (field) => {
+let checkRules = (field, key) => {
     // console.log('check rules', field);
+
+    console.log('field: ', field, 'key: ', key);
 
     let input = get(inputs)[field];
 
+    // Change field validation to field.rules maybe
     let rules = field.validation;
 
+    let fieldMessages = {};
+
     Object.keys(rules).map((rule, val) => {
-        // console.log('rule: ', rule, 'value:', val);
         if (!eval(rule)(input, val)) {
-            errors.update(err => [...err, err['test']]);
-            console.log(get(errors));
+            fieldMessages[rule] = `Some ${rule} error.`;            
         }
-        // console.log('Valid? ', eval(rule)(input, val));
     });
 
-    // console.log(rules);
+    errors.update(err => Object.assign(err, {[key]: fieldMessages}));
+    console.log(get(errors));
+}
+
+let checkSingleRule = () => {
+
 }
 
 // Rules methods
@@ -51,6 +58,11 @@ let max = (input, max) => {
 
 let min = (input, min) => {
     return input >= min;
+}
+
+let unique = (input) => {
+    return false;
+    // return input >= min;
 }
 
 export default validate;
