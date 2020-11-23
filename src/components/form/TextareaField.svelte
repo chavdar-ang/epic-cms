@@ -11,5 +11,6 @@
     id={field}
     cols="30"
     rows="10"
-    bind:value={$inputs[key]} />
+    bind:value={$inputs[key]}
+    on:focus />
 </div>

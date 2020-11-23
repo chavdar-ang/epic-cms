@@ -10,14 +10,15 @@
   const fields = model.fields;
 
   let submit = () => {
-    errors = validate(model.settings.slug);
-    console.log("submit");
+    validate(model.settings.slug);
+    console.log($errors);
   };
 
-  // let errors = (input) => {
-  //   return validate()
-  // }
-  // get errors from store!
+  let onFocus = key => {
+    delete $errors[key];
+    // Trigger rerendering
+    $errors = $errors;
+  };
 </script>
 
 <style>
@@ -33,10 +34,11 @@
       <svelte:component
         this={formComponents[fields[key].type]}
         field={fields[key]}
-        {key} />
+        {key}
+        on:focus={() => onFocus(key)} />
 
       {#if $errors[key]}
-        <p class="error-message">{$errors[0]}</p>
+        <p class="error-message">{$errors[key][0]}</p>
       {/if}
     </div>
   {/each}

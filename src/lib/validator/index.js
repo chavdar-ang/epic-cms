@@ -31,11 +31,11 @@ let checkRules = (field, key) => {
     // Change field validation to field.rules maybe
     let rules = field.validation;
 
-    let fieldMessages = {};
+    let fieldMessages = [];
 
     Object.keys(rules).map((rule, val) => {
         if (!eval(rule)(input, val)) {
-            fieldMessages[rule] = `Some ${rule} error.`;            
+            fieldMessages.push(`Some ${rule} error.`);
         }
     });
 
@@ -43,9 +43,9 @@ let checkRules = (field, key) => {
     console.log(get(errors));
 }
 
-let checkSingleRule = () => {
+// let checkSingleRule = () => {
 
-}
+// }
 
 // Rules methods
 let required = (input) => {
