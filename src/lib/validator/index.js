@@ -1,51 +1,46 @@
 import { get } from "svelte/store";
 import { schema, inputs, errors } from "../../stores";
 
+const messages = {
+    required: 'The :attribute field is required.',
+    min: 'The :attribute must be at least :min.',
+    max: 'The :attribute may not be greater than :max.',
+    unique: 'The :attribute has already been taken.'
+}
 
+let renderMessage = (key, rule, value) => {
+    let message = messages[rule].replace(':attribute', key);
+    return message.replace(`:${rule}`, value)
+}
 
 let validate = (model) => {
-    
     let fields = get(schema)[model].fields;
-    // console.log('test', fields);
 
     Object.keys(fields).map(key => {
         checkRules(fields[key], key);
-    });
-
-    // for (const key in fields) {
-
-    //     console.log('field', field);
-
-    //     checkRules(fields[key])
-    // }
-    
+    });    
 }
 
 let checkRules = (field, key) => {
-    // console.log('check rules', field);
-
-    console.log('field: ', field, 'key: ', key);
-
     let input = get(inputs)[field];
+
+    console.log('field input', input);
 
     // Change field validation to field.rules maybe
     let rules = field.validation;
 
     let fieldMessages = [];
 
-    Object.keys(rules).map((rule, val) => {
-        if (!eval(rule)(input, val)) {
-            fieldMessages.push(`Some ${rule} error.`);
+    Object.entries(rules).map(([rule, value]) => {
+        // console.log('rule: ', rule, 'val: ', value);
+        if (!eval(rule)(input, value)) {
+            fieldMessages.push(renderMessage(key, rule, value));
         }
     });
 
     errors.update(err => Object.assign(err, {[key]: fieldMessages}));
     console.log(get(errors));
 }
-
-// let checkSingleRule = () => {
-
-// }
 
 // Rules methods
 let required = (input) => {
