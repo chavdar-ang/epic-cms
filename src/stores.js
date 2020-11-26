@@ -5,6 +5,8 @@ export const schema = readable(models);
 
 // export const modelValues = writable([]);
 
+export const list = writable([]);
 export const inputs = writable([]);
+
 
 export const errors = writable([]);

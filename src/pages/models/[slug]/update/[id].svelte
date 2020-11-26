@@ -1,5 +1,5 @@
 <script>
-  // import models from "../../../../database/schema";
+  import { beforeUpdate } from "svelte";
   import seeds from "../../../../database/seeds";
   import { schema, inputs } from "../../../../stores";
   import { params } from "@roxi/routify";
@@ -10,7 +10,9 @@
   $: model = $schema[$params.slug];
   $: slug = $params.slug;
 
-  $inputs = seeds[$params.slug].find(row => row._id == $params.id);
+  beforeUpdate(async () => {
+    $inputs = seeds[$params.slug].find(row => row._id == $params.id);
+  });
 
   export let id;
 </script>

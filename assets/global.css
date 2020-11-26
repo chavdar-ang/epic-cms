@@ -25,3 +25,15 @@ li .current {
 	font-size: 0.8em;
 	color: rgb(255, 87, 87);
 }
+
+table {
+	font-family: arial, sans-serif;
+	border-collapse: collapse;
+	width: 100%;
+}
+
+th {
+	border: 1px solid #dddddd;
+	text-align: left;
+	padding: 8px;
+}

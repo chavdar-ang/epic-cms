@@ -1,6 +1,6 @@
 <script>
-  import { onDestroy } from 'svelte';
-  import { inputs, errors } from "../../../../stores";
+  
+  import { errors } from "../../../../stores";
   import formComponents from "../../../../components/form";
   import validate from "../../../../lib/validator";
 
@@ -16,11 +16,13 @@
     $errors = $errors;
   };
 
-  onDestroy(() => $inputs = []);
+  let fields = model.related ? [...model.fields, ...model.related] : model.fields;
+
+  
 </script>
 
 <div>
-  {#each model.fields as field}
+  {#each fields as field}
     <div>
       <svelte:component
         this={formComponents[field.type]}

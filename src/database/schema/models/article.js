@@ -29,7 +29,9 @@ export default {
                 min: 20,
                 max: 1000
             }
-        },
+        }
+    ],
+    related: [
         {
             slug: "author",
             name: "Author",

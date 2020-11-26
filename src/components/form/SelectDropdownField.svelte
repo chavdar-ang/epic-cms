@@ -7,9 +7,9 @@
 <div class="form-control">
   <label for={field.slug}>{field.name}</label>
   <select name={field.slug} bind:value={$inputs[field.slug]} on:focus>
-    <option value="volvo">Volvo</option>
-    <option value="saab">Saab</option>
-    <option value="opel">Opel</option>
-    <option value="audi">Audi</option>
+    <option value="1">One</option>
+    <option value="2">Two</option>
+    <option value="3">Three</option>
+    <option value="4">Four</option>
   </select>
 </div>

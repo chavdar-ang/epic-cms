@@ -26,6 +26,7 @@ let validate = (model) => {
     });    
 }
 
+// Rules methods - can be moved to rules.js
 let checkRules = (field) => {
     let input = get(inputs)[field.slug];
 
@@ -61,7 +62,6 @@ let callRule = (rule) => {
     }
 }
 
-// Rules methods
 let required = (input = '') => input ? true : false;
 
 let min = (input = '', min) => input.length >= min;
