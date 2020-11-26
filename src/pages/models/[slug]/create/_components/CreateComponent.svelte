@@ -8,6 +8,8 @@
   const fields = model.fields;
 
   let submit = () => {
+    console.log('validate', model.settings.slug);
+    console.log('errors', $errors);
     validate(model.settings.slug);
   };
 

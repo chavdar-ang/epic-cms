@@ -14,9 +14,9 @@ export default {
             name: "Name",
             type: "input",
             rules: {
+                required: true,
                 min: 3,
-                max: 32,
-                required: true
+                max: 32
             }
         },
         {
@@ -24,10 +24,10 @@ export default {
             name: "Email",
             type: "email",
             rules: {
-                min: 8,
-                max: 64,
                 required: true,
                 email: true,
+                min: 8,
+                max: 64,
                 unique: true
             }
         }
