@@ -1,12 +1,10 @@
 <script>
-  import formComponents from "../../../../../components/form";
-  import { errors } from "../../../../../stores";
-  // import validate from "../../../../../lib/validator";
-  import validate from "../../../../../lib/validator";
+  import { onDestroy } from 'svelte';
+  import { inputs, errors } from "../../../../stores";
+  import formComponents from "../../../../components/form";
+  import validate from "../../../../lib/validator";
 
   export let model;
-
-  const fields = model.fields;
 
   let submit = () => {
     validate(model.settings.slug);
@@ -17,10 +15,12 @@
     // Trigger rerendering
     $errors = $errors;
   };
+
+  onDestroy(() => $inputs = []);
 </script>
 
 <div>
-  {#each fields as field}
+  {#each model.fields as field}
     <div>
       <svelte:component
         this={formComponents[field.type]}

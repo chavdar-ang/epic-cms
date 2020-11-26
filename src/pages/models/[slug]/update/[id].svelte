@@ -5,7 +5,7 @@
   import { params } from "@roxi/routify";
 
   // Components
-  import UpdateComponent from "./_components/UpdateComponent.svelte";
+  import CrudComponent from "../_components/CRUDComponent.svelte";
 
   $: model = $schema[$params.slug];
   $: slug = $params.slug;
@@ -17,4 +17,4 @@
 
 <h2>{slug} update</h2>
 
-<UpdateComponent {model} />
+<CrudComponent {model} />

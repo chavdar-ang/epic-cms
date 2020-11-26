@@ -2,6 +2,7 @@ export default {
     settings: {
         name: "Article",
         slug: "article",
+        type: "document", // document or edge?
         collection: "articles",
         uid: "_id",
         description: "A description about the model.",
@@ -27,6 +28,18 @@ export default {
                 required: true,
                 min: 20,
                 max: 1000
+            }
+        },
+        {
+            slug: "author",
+            name: "Author",
+            type: "selectDropdown",
+            reference: {
+                type: "belongsTo",
+                to: "user", // The slug
+                on: "_id",
+                via: "author_id",
+                label: "name",
             }
         }
     ]

@@ -5,10 +5,10 @@
   $: model = $schema[$params.slug];
 
   // Components
-  import CreateComponent from "./_components/CreateComponent.svelte";
+  import CrudComponent from "../_components/CRUDComponent.svelte";
   export let slug;
 </script>
 
 <h2>{slug} create</h2>
 
-<CreateComponent {model} />
+<CrudComponent {model} />

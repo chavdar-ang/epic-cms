@@ -2,6 +2,7 @@ export default {
     settings: {
         name: "User",
         slug: "user",
+        type: "document", // document or edge?
         collection: "users",
         uid: "_id",
         description: "A description about the model.",
