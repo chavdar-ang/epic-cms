@@ -25,8 +25,8 @@
 <hr />
 <table>
   <tr>
-    {#each Object.keys(model.fields) as th}
-      <th>{th}</th>
+    {#each model.fields as field}
+      <th>{field.name}</th>
     {/each}
     <th>Edit</th>
     <th>Delete</th>

@@ -8,15 +8,15 @@
 	// // 	dispatch('focused');
 	// // }
 
-  export let key, field;
+  export let field;
 </script>
 
 <div class="form-control">
-  <label for={key}>{field.name}</label>
+  <label for={field.slug}>{field.name}</label>
   <input
     type="text"
-    name={key}
+    name={field.slug}
     placeholder={'test' ?? ''}
-    bind:value={$inputs[key]}
+    bind:value={$inputs[field.slug]}
     on:focus />
 </div>

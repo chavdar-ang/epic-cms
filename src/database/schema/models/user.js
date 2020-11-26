@@ -8,8 +8,9 @@ export default {
         increments: true,
         timestamps: true,
     },
-    fields: {
-        name: {
+    fields: [
+        {
+            slug: "name",
             name: "Name",
             type: "input",
             rules: {
@@ -18,7 +19,8 @@ export default {
                 required: true
             }
         },
-        email: {
+        {
+            slug: "email",
             name: "Email",
             type: "email",
             rules: {
@@ -29,5 +31,5 @@ export default {
                 unique: true
             }
         }
-    }
+    ]
 }

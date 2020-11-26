@@ -12,24 +12,23 @@
     validate(model.settings.slug);
   };
 
-  let onFocus = key => {
-    delete $errors[key];
+  let onFocus = slug => {
+    delete $errors[slug];
     // Trigger rerendering
     $errors = $errors;
   };
 </script>
 
 <div>
-  {#each Object.keys(fields) as key}
+  {#each fields as field}
     <div>
       <svelte:component
-        this={formComponents[fields[key].type]}
-        field={fields[key]}
-        {key}
-        on:focus={() => onFocus(key)} />
+        this={formComponents[field.type]}
+        {field}
+        on:focus={() => onFocus(field.slug)} />
 
-      {#if [key] in $errors}
-        <p class="error-message">{$errors[key][0]}</p>
+      {#if [field.slug] in $errors}
+        <p class="error-message">{$errors[field.slug][0]}</p>
       {/if}
     </div>
   {/each}

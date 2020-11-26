@@ -8,8 +8,9 @@ export default {
         increments: true,
         timestamps: true,
     },
-    fields: {
-        title: {
+    fields: [
+        {
+            slug: "title",
             name: "Title",
             type: "input",
             rules: {
@@ -18,7 +19,8 @@ export default {
                 max: 32
             }
         },
-        body: {
+        {
+            slug: "body",
             name: "Body",
             type: "textarea",
             rules: {
@@ -27,5 +29,5 @@ export default {
                 max: 1000
             }
         }
-    }
+    ]
 }
