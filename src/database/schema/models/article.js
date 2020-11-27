@@ -29,13 +29,35 @@ export default {
                 min: 20,
                 max: 1000
             }
+        },
+        {
+            slug: "author",
+            name: "Author (plain)",
+            type: "selectDropdown",
+            label: "Select an author (plain)",
+            options: {
+                1: "One - test",
+                2: "Two - test",
+                3: "Three - test",
+                4: "Four - test"
+            },
+            rules: {
+                required: true
+            }
         }
     ],
     related: [
         {
-            slug: "author",
-            name: "Author",
+            slug: "author-rel",
+            name: "Author (related)",
             type: "selectDropdown",
+            label: "Select an author",
+            options: {
+                1: "One",
+                2: "Two",
+                3: "Three",
+                4: "Four"
+            },
             reference: {
                 type: "belongsTo",
                 to: "user", // The slug

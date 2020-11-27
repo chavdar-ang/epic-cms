@@ -1,10 +1,12 @@
 <script>
-  
   import { errors } from "../../../../stores";
   import formComponents from "../../../../components/form";
   import validate from "../../../../lib/validator";
+  import { renderFields } from "../../../../lib/crud";
 
   export let model;
+
+  renderFields();
 
   let submit = () => {
     validate(model.settings.slug);
@@ -16,9 +18,10 @@
     $errors = $errors;
   };
 
-  let fields = model.related ? [...model.fields, ...model.related] : model.fields;
-
-  
+  // Adding relations to the fields
+  let fields = model.related
+    ? [...model.fields, ...model.related]
+    : model.fields;
 </script>
 
 <div>

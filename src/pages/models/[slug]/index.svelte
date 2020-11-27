@@ -1,6 +1,5 @@
 <script>
   import { schema } from "../../../stores";
-  import seeds from "../../../database/seeds";
   import { params } from "@roxi/routify";
 
   // Components

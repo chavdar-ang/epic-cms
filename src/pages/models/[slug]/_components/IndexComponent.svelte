@@ -11,7 +11,7 @@
     ? [...model.fields, ...model.related]
     : model.fields;
 
-  beforeUpdate(() => {
+  beforeUpdate(async () => {
     $list = seeds[model.settings.slug];
   });
 </script>
@@ -22,6 +22,7 @@
 <h4>Table</h4>
 <hr />
 <table>
+  <!-- Table heading -->
   <tr>
     {#each fields as field}
       <th>{field.name}</th>
@@ -30,6 +31,7 @@
     <th>Delete</th>
   </tr>
 
+  <!-- Items -->
   {#each $list as item}
     <Row {model} {item} />
   {/each}
