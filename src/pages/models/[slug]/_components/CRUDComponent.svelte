@@ -2,26 +2,22 @@
   import { errors } from "../../../../stores";
   import formComponents from "../../../../components/form";
   import validate from "../../../../lib/validator";
-  import { renderFields } from "../../../../lib/crud";
+  import { mergeFields } from "../../../../lib/crud";
 
   export let model;
-
-  renderFields();
 
   let submit = () => {
     validate(model.settings.slug);
   };
-
+  
   let onFocus = slug => {
     delete $errors[slug];
     // Trigger rerendering
     $errors = $errors;
   };
-
+  
   // Adding relations to the fields
-  let fields = model.related
-    ? [...model.fields, ...model.related]
-    : model.fields;
+  let fields = mergeFields(model);
 </script>
 
 <div>

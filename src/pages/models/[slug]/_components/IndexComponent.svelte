@@ -12,7 +12,7 @@
     : model.fields;
 
   beforeUpdate(async () => {
-    $list = seeds[model.settings.slug];
+    $list = seeds[model.settings.collection];
   });
 </script>
 
