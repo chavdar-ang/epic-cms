@@ -1,5 +1,5 @@
 <script>
-  import { inputs } from "../../stores";
+  import { inputs } from "../../../stores";
 
   export let field;
 </script>

@@ -6,8 +6,6 @@
 
   export let model;
 
-  console.log("form", formComponents["select"]);
-
   let submit = () => {
     validate(model.settings.slug);
   };

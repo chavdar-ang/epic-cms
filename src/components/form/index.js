@@ -1,15 +1,15 @@
-import inputField from "./InputField.svelte";
-import emailField from "./EmailField.svelte";
-import textareaField from "./TextareaField.svelte";
-import selectDropdownField from "./SelectDropdownField.svelte";
+import textField from "./input/TextField.svelte";
+import emailField from "./input/EmailField.svelte";
+import textareaField from "./input/TextareaField.svelte";
+import dropdownField from "./select/DropdownField.svelte";
 
 export default {
     input: {
-        text: inputField,
+        text: textField,
         email: emailField,
-        textarea: textareaField,
+        textarea: textareaField
     },
     select: {
-        dropdown: selectDropdownField
+        dropdown: dropdownField
     }
 }

@@ -14,6 +14,7 @@ export default {
             slug: "name",
             name: "Name",
             type: "input",
+            style: "text",
             rules: {
                 required: true,
                 min: 3,
@@ -23,7 +24,8 @@ export default {
         {
             slug: "email",
             name: "Email",
-            type: "email",
+            type: "input",
+            style: "email",
             rules: {
                 required: true,
                 email: true,
