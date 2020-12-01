@@ -9,13 +9,13 @@ export let mergeFields = (model) => {
     
     let relatedFields = model.related.map(relation => {
         // console.log('related field', relation);
-        eval(relation.type)(relation)
+        eval(`${relation.type}_${relation.style}`)(relation)
         return relation;
     });
     return [...model.fields, ...relatedFields];
 }
 
-let selectDropdown = (params) => {
+let select_dropdown = (params) => {
     // console.log('params', params);
     eval(params.reference.type)(params.reference)
 }
@@ -29,4 +29,12 @@ let belongsTo = (ref) => {
     console.log('data', data);
     // console.log('seeds', seeds);
     // console.log('ref', ref);
+}
+
+// fix list when related values are present
+let mergeRelated = (model, list) => {
+    if (!model.related) {
+        return list;
+    }
+
 }

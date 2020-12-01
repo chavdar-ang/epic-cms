@@ -14,6 +14,7 @@ export default {
             slug: "title",
             name: "Title",
             type: "input",
+            style: "text",
             rules: {
                 required: true,
                 min: 3,
@@ -23,7 +24,8 @@ export default {
         {
             slug: "body",
             name: "Body",
-            type: "textarea",
+            type: "input",
+            style: "textarea",
             rules: {
                 required: true,
                 min: 20,
@@ -33,7 +35,9 @@ export default {
         {
             slug: "author",
             name: "Author (plain)",
-            type: "selectDropdown",
+            type: "select",
+            style: "dropdown",
+            // Style can be added. For example style: 'dropbown'/'radio'/'button'
             label: "Select an author (plain)",
             options: {
                 1: "One - test",
@@ -50,7 +54,8 @@ export default {
         {
             slug: "author-rel",
             name: "Author (related)",
-            type: "selectDropdown",
+            type: "select",
+            style: "dropdown",
             label: "Select an author",
             options: {
                 1: "One",

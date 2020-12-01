@@ -6,16 +6,18 @@
 
   export let model;
 
+  console.log("form", formComponents["select"]);
+
   let submit = () => {
     validate(model.settings.slug);
   };
-  
+
   let onFocus = slug => {
     delete $errors[slug];
     // Trigger rerendering
     $errors = $errors;
   };
-  
+
   // Adding relations to the fields
   let fields = mergeFields(model);
 </script>
@@ -24,7 +26,7 @@
   {#each fields as field}
     <div>
       <svelte:component
-        this={formComponents[field.type]}
+        this={formComponents[field.type][field.style]}
         {field}
         on:focus={() => onFocus(field.slug)} />
 

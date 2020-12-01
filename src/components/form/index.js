@@ -4,8 +4,12 @@ import textareaField from "./TextareaField.svelte";
 import selectDropdownField from "./SelectDropdownField.svelte";
 
 export default {
-    input: inputField,
-    email: emailField,
-    textarea: textareaField,
-    selectDropdown: selectDropdownField
+    input: {
+        text: inputField,
+        email: emailField,
+        textarea: textareaField,
+    },
+    select: {
+        dropdown: selectDropdownField
+    }
 }

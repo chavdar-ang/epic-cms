@@ -2,15 +2,17 @@
   import { beforeUpdate } from "svelte";
   import { list } from "../../../../stores";
   import seeds from "../../../../database/seeds";
+  // import { mergeFields } from "../../../../lib/crud";
+  import { mergeFields } from "../../../../lib/crud";
 
   import Row from "./Row.svelte";
 
   export let model;
 
-  $: fields = model.related
-    ? [...model.fields, ...model.related]
-    : model.fields;
+  let fields = mergeFields(model);
 
+  // fix list when has related data
+  
   beforeUpdate(async () => {
     $list = seeds[model.settings.collection];
   });
