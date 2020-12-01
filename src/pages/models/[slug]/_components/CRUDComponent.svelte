@@ -2,11 +2,13 @@
   import { errors } from "../../../../stores";
   import formComponents from "../../../../components/form";
   import validate from "../../../../lib/validator";
-  import { mergeFields } from "../../../../lib/crud";
+  import { renderFields } from "../../../../lib/crud";
+  import { inputs } from "../../../../stores";
 
   export let model;
 
   let submit = () => {
+    console.log('inputs', $inputs);
     validate(model.settings.slug);
   };
 
@@ -17,7 +19,7 @@
   };
 
   // Adding relations to the fields
-  let fields = mergeFields(model);
+  let fields = renderFields(model);
 </script>
 
 <div>
@@ -26,7 +28,8 @@
       <svelte:component
         this={formComponents[field.type][field.style]}
         {field}
-        on:focus={() => onFocus(field.slug)} />
+        on:focus={() => onFocus(field.slug)}
+        bind:value={$inputs[field.slug]} />
 
       {#if [field.slug] in $errors}
         <p class="error-message">{$errors[field.slug][0]}</p>

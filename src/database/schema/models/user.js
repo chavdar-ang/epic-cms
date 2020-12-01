@@ -13,13 +13,31 @@ export default {
         {
             slug: "name",
             name: "Name",
-            type: "input",
-            style: "text",
-            rules: {
-                required: true,
-                min: 3,
-                max: 32
-            }
+            type: "group",
+            fields: [
+                {
+                    slug: "firstname",
+                    name: "First name",
+                    type: "input",
+                    style: "text",
+                    rules: {
+                        required: true,
+                        min: 3,
+                        max: 32
+                    }
+                },
+                {
+                    slug: "lastname",
+                    name: "Last name",
+                    type: "input",
+                    style: "text",
+                    rules: {
+                        required: true,
+                        min: 3,
+                        max: 32
+                    }
+                },
+            ]
         },
         {
             slug: "email",

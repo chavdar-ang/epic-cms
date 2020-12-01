@@ -3,13 +3,13 @@
   import { list } from "../../../../stores";
   import seeds from "../../../../database/seeds";
   // import { mergeFields } from "../../../../lib/crud";
-  import { mergeFields } from "../../../../lib/crud";
+  import { renderFields } from "../../../../lib/crud";
 
   import Row from "./Row.svelte";
 
   export let model;
 
-  let fields = mergeFields(model);
+  let fields = renderFields(model);
 
   // fix list when has related data
   

@@ -1,7 +1,5 @@
 <script>
-  import { inputs } from "../../../stores";
-
-  export let field;
+  export let field, value;
 </script>
 
 <div class="form-control">
@@ -10,6 +8,6 @@
     type="text"
     name={field.slug}
     placeholder={'test' ?? ''}
-    bind:value={$inputs[field.slug]}
+    bind:value
     on:focus />
 </div>

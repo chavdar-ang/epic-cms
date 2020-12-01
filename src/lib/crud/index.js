@@ -2,17 +2,19 @@ import { get } from "svelte/store";
 import { schema } from "../../stores";
 import seeds from "../../database/seeds";
 
-export let mergeFields = (model) => {
-    if (!model.related) {
-        return model.fields;
-    }
+// Generate basic fields from related fields 
+export let renderFields = (model) => {
+    return [...model.fields, ...renderRelations(model.related)];
+}
+
+let renderRelations = (related) => {
+    if (!related) return;
     
-    let relatedFields = model.related.map(relation => {
+    return related.map(relation => {
         // console.log('related field', relation);
         eval(`${relation.type}_${relation.style}`)(relation)
         return relation;
     });
-    return [...model.fields, ...relatedFields];
 }
 
 let select_dropdown = (params) => {
@@ -31,10 +33,13 @@ let belongsTo = (ref) => {
     // console.log('ref', ref);
 }
 
+let nestFields = () => {
+
+}
+
 // fix list when related values are present
 let mergeRelated = (model, list) => {
     if (!model.related) {
         return list;
     }
-
 }
