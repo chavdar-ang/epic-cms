@@ -2,10 +2,8 @@
   import { beforeUpdate, onMount } from "svelte";
   import { list } from "../../../../stores";
   // import { mergeFields } from "../../../../lib/crud";
-  import { renderFields } from "../../../../lib/crud";
-
+  // import { renderFields } from "../../../../lib/crud";
   import api from "../../../../lib/api";
-
   import Row from "./Row.svelte";
 
   export let model;
@@ -32,7 +30,7 @@
 <table>
   <!-- Table heading -->
   <tr>
-    {#each Object.keys(model.schema) as field}
+    {#each Object.keys(model.list) as field}
       <th>{field}</th>
     {/each}
     <th>Edit</th>

@@ -11,11 +11,26 @@ export default {
         timestamps: true,
     },
     schema: {
-        name: {
-            firstname: 'firstname',
-            lastname: 'lastname'
+        name: 'name',
+        email: 'email',
+        username: 'username',
+        address: {
+            city: 'city',
+            street: 'street',
+            zipcode: "zipcode",
+            geo: {
+                lat: 'lat',
+                lng: 'lng'
+            }
         },
-        email: 'email'
+        phone: 'phone',
+        website: 'website'
+    },
+    list: {
+        name: 'name',
+        email: 'email',
+        username: 'username',
+        address: ':address.city :address.street'
     },
     fields: [
         {
