@@ -1,5 +1,6 @@
 export default {
     settings: {
+        url: "https://jsonplaceholder.typicode.com/posts",
         name: "Article",
         slug: "article",
         type: "document", // document or edge?
@@ -8,6 +9,10 @@ export default {
         description: "A description about the model.",
         increments: true,
         timestamps: true,
+    },
+    schema: {
+        title: 'title',
+        body: 'body'
     },
     fields: [
         {

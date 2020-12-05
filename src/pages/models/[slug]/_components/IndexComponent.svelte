@@ -1,21 +1,27 @@
 <script>
-  import { beforeUpdate } from "svelte";
+  import { beforeUpdate, onMount } from "svelte";
   import { list } from "../../../../stores";
-  import seeds from "../../../../database/seeds";
   // import { mergeFields } from "../../../../lib/crud";
   import { renderFields } from "../../../../lib/crud";
+
+  import api from "../../../../lib/api";
 
   import Row from "./Row.svelte";
 
   export let model;
 
-  let fields = renderFields(model);
+  // let fields = renderFields(model);
 
   // fix list when has related data
-  
+
   beforeUpdate(async () => {
-    $list = seeds[model.settings.collection];
+    let response = await api(model.settings.url);
+
+    $list = response.data;
   });
+
+  // console.log("list", $list);
+  // $list = seeds[model.settings.collection];
 </script>
 
 <h3>CRUD index component</h3>
@@ -26,8 +32,8 @@
 <table>
   <!-- Table heading -->
   <tr>
-    {#each fields as field}
-      <th>{field.name}</th>
+    {#each Object.keys(model.schema) as field}
+      <th>{field}</th>
     {/each}
     <th>Edit</th>
     <th>Delete</th>

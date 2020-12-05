@@ -3,8 +3,8 @@
 </script>
 
 <tr>
-  {#each model.fields as field}
-    <td>{item[field.slug]}</td>
+  {#each Object.keys(model.schema) as field}
+    <td>{item[field]}</td>
   {/each}
   <td>
     <a href="/models/{model.settings.slug}/update/{item['_id']}"> Edit</a>

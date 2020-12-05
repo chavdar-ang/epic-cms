@@ -1,4 +1,4 @@
-import article from './models/article';
+import post from './models/post';
 import user from './models/user';
 
-export default { article, user }
+export default { post, user }
