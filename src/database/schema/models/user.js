@@ -17,14 +17,14 @@ let schema = {
     address: {
         city: 'city',
         street: 'street',
-        zipcode: 'zipcode',
-        geo: {
-            lat: 'lat',
-            lng: 'lng'
-        }
+        // zipcode: 'zipcode',
+        // geo: {
+        //     lat: 'lat',
+        //     lng: 'lng'
+        // }
     },
-    phone: 'phone',
-    website: 'website'
+    // phone: 'phone',
+    // website: 'website'
 };
 
 let list = {
@@ -58,8 +58,25 @@ let fields = {
             unique: true
         }
     },
+    username: {
+        name: "Username",
+        type: "input",
+        style: "text",
+        rules: {
+            required: true,
+            min: 3,
+            max: 32
+        }
+    },
     address: {
         name: "Address",
+        type: "input", // related!
+        style: "text",
+        rules: {
+            required: true,
+            min: 3,
+            max: 32
+        }
     },
     city: {
         name: "City",

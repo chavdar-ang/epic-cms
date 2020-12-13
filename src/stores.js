@@ -3,8 +3,6 @@ import models from "./database/schema";
 
 export const schema = readable(models);
 
-// export const modelValues = writable([]);
-
 export const list = writable([]);
 export const inputs = writable([]);
 

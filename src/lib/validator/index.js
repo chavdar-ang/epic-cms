@@ -9,6 +9,7 @@ const messages = {
     email: 'The :attribute must be a valid email address.'
 }
 
+// ??
 let renderMessage = (slug, rule, value) => {
     let message = messages[rule].replace(':attribute', slug);
     
@@ -19,22 +20,25 @@ let renderMessage = (slug, rule, value) => {
 let validate = (model) => {
     // clean up errors
     errors.update(err => []);
-    let fields = get(schema)[model].fields;
+    const fields = get(schema)[model].fields;
 
-    fields.map(field => {
-        checkRules(field);
+    Object.keys(fields).map(field => {
+        checkRules(model, field);
     });    
 }
 
 // Rules methods - can be moved to rules.js
-let checkRules = (field) => {
-    let input = get(inputs)[field.slug];
+let checkRules = (model, field) => {
+    let input = get(inputs)[field];
 
-    let rules = field.rules;
-
+    const fields = get(schema)[model].fields;
+    
+    let rules = fields[field].rules;
+    
     let fieldMessages = [];
-
+    
     Object.entries(rules).map(([rule, value]) => {
+        console.log('test', rule, value, input);
         if (!callRule(rule)(input, value)) {
             fieldMessages.push(renderMessage(field.slug, rule, value));
         }
@@ -62,6 +66,7 @@ let callRule = (rule) => {
     }
 }
 
+// Rule methods
 let required = (input = '') => input ? true : false;
 
 let min = (input = '', min) => input.length >= min;

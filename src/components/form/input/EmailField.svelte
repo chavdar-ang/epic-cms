@@ -3,6 +3,6 @@
 </script>
 
 <div class="form-control">
-  <label for={field.slug}>{field.name}</label>
-  <input type="email" name={field.slug} bind:value on:focus />
+  <label for={Object.keys(field)}>{field.name}</label>
+  <input type="email" name={Object.keys(field)} bind:value on:focus />
 </div>

@@ -7,8 +7,10 @@
 
   export let model;
 
+  // console.log("inputs: ", $inputs);
+
   let submit = () => {
-    console.log('inputs', $inputs);
+    console.log("inputs", $inputs);
     validate(model.settings.slug);
   };
 
@@ -18,21 +20,30 @@
     $errors = $errors;
   };
 
-  // Adding relations to the fields
-  let fields = renderFields(model);
+  // Return the related component
+  let component = (field) => {
+    return formComponents[fields[field].type][fields[field].style];
+  }
+
+  let renderField = (field) => {
+    return {slug: field, ...fields[field] }
+  }
+
+  let schema = model.schema;
+  let fields = model.fields;
 </script>
 
 <div>
-  {#each fields as field}
+  {#each Object.keys(schema) as field}
     <div>
       <svelte:component
-        this={formComponents[field.type][field.style]}
-        {field}
-        on:focus={() => onFocus(field.slug)}
-        bind:value={$inputs[field.slug]} />
+        this={component(field)}
+        field={renderField(field)}
+        on:focus={() => onFocus(field)}
+        bind:value={$inputs[field]} />
 
-      {#if [field.slug] in $errors}
-        <p class="error-message">{$errors[field.slug][0]}</p>
+      {#if [field] in $errors}
+        <p class="error-message">{$errors[field][0]}</p>
       {/if}
     </div>
   {/each}

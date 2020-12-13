@@ -4,7 +4,7 @@ import seeds from "../../database/seeds";
 
 // Generate basic fields from related fields 
 export let renderFields = (model) => {
-    return [...model.fields, ...renderRelations(model.related)];
+    return model.schema; //[...model.fields, ...renderRelations(model.related)];
 }
 
 let renderRelations = (related) => {
