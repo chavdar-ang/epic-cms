@@ -71,12 +71,7 @@ let fields = {
     address: {
         name: "Address",
         type: "input", // related!
-        style: "text",
-        rules: {
-            required: true,
-            min: 3,
-            max: 32
-        }
+        style: "text"
     },
     city: {
         name: "City",

@@ -10,7 +10,6 @@
   // console.log("inputs: ", $inputs);
 
   let submit = () => {
-    console.log("inputs", $inputs);
     validate(model.settings.slug);
   };
 

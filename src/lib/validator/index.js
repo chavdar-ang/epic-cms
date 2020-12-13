@@ -33,19 +33,20 @@ let checkRules = (model, field) => {
 
     const fields = get(schema)[model].fields;
     
-    let rules = fields[field].rules;
+    let rules = fields[field]?.rules;
+
+    if (!rules) return;
     
     let fieldMessages = [];
     
     Object.entries(rules).map(([rule, value]) => {
-        console.log('test', rule, value, input);
         if (!callRule(rule)(input, value)) {
-            fieldMessages.push(renderMessage(field.slug, rule, value));
+            fieldMessages.push(renderMessage(field, rule, value));
         }
     });
-
+    
     if (fieldMessages.length > 0) {
-        errors.update(err => Object.assign(err, {[field.slug]: fieldMessages}));
+        errors.update(err => Object.assign(err, {[field]: fieldMessages}));
     }
 }
 
