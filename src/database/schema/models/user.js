@@ -31,7 +31,8 @@ let list = {
     name: 'name',
     email: 'email',
     username: 'username',
-    address: ':address.city and :address.street'
+    city: 'address.city',
+    address: 'address.street'
 };
 
 let fields = {
