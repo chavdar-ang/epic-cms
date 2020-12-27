@@ -27,7 +27,7 @@ let schema = {
     // website: 'website'
 };
 
-let list = {
+const list = {
     name: 'name',
     email: 'email',
     username: 'username',
@@ -35,7 +35,7 @@ let list = {
     address: 'address.street'
 };
 
-let fields = {
+const fields = {
     name: {
         name: "Name",
         type: "input",

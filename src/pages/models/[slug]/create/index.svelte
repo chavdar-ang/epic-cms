@@ -4,7 +4,7 @@
   import { params } from "@roxi/routify";
 
   // Components
-  import CrudComponent from "../_components/CRUDComponent.svelte";
+  import Renderer from "../_components/Renderer.svelte";
 
   $: model = $schema[$params.slug];
 
@@ -18,4 +18,4 @@
 
 <h2>{model.settings.name} create</h2>
 
-<CrudComponent {model} />
+<Renderer schema={model.schema} fields={model.fields} />

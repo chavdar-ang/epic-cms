@@ -1,12 +1,11 @@
 <script>
   import { onMount } from "svelte";
   import api from "../../../../lib/api";
-  // import seeds from "../../../../database/seeds";
   import { schema, inputs } from "../../../../stores";
   import { params } from "@roxi/routify";
 
   // Components
-  import CrudComponent from "../_components/CRUDComponent.svelte";
+  import Renderer from "../_components/Renderer.svelte";
 
   $: model = $schema[$params.slug];
 
@@ -22,4 +21,4 @@
 
 <h2>{model.settings.name} update</h2>
 
-<CrudComponent {model} />
+<Renderer {model} />
