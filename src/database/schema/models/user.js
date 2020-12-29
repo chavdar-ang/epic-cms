@@ -18,10 +18,10 @@ let schema = {
         city: 'city',
         street: 'street',
         // zipcode: 'zipcode',
-        // geo: {
-        //     lat: 'lat',
-        //     lng: 'lng'
-        // }
+        geo: {
+            lat: 'lat',
+            lng: 'lng'
+        }
     },
     // phone: 'phone',
     // website: 'website'
@@ -85,6 +85,31 @@ const fields = {
     },
     street: {
         name: "Street",
+        type: "input",
+        style: "text",
+        rules: {
+            required: true,
+            min: 8,
+            max: 64,
+        }
+    },
+    geo: {
+        name: "Geo Localtion",
+        type: "input",
+        style: "text",
+    },
+    lat: {
+        name: "Latitude",
+        type: "input",
+        style: "text",
+        rules: {
+            required: true,
+            min: 8,
+            max: 64,
+        }
+    },
+    lng: {
+        name: "Longitude",
         type: "input",
         style: "text",
         rules: {

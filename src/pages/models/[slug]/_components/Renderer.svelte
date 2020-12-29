@@ -1,7 +1,7 @@
 <script>
   import { errors } from "../../../../stores";
   import formComponents from "../../../../components/form";
-  
+
   import { renderFields, flatten } from "../../../../lib/crud";
   import { inputs } from "../../../../stores";
 
@@ -41,7 +41,7 @@
   {#each Object.keys(schema) as field}
     {#if typeof schema[field] === 'object'}
       <div class="sub">
-        <h4>Some model</h4>
+        <h4>{fields[field].name}</h4>
         <svelte:self schema={schema[field]} {fields} />
       </div>
     {:else}
