@@ -1,15 +1,11 @@
 <script>
   import { errors } from "../../../../stores";
   import formComponents from "../../../../components/form";
-  import validate from "../../../../lib/validator";
+  
   import { renderFields, flatten } from "../../../../lib/crud";
   import { inputs } from "../../../../stores";
 
   export let schema, fields;
-
-  let submit = () => {
-    validate(model.settings.slug);
-  };
 
   let onFocus = (slug) => {
     delete $errors[slug];
@@ -26,18 +22,28 @@
     return { slug: field, ...fields[field] };
   };
 
-  console.log("123", fields);
-
   // fix this!
   // let schema = flatten(model.schema, {});
   // let fields = model.fields;
 </script>
 
+<style>
+  .sub {
+    background-color: snow;
+    margin: 4px;
+    padding: 10px;
+    border-radius: 7px;
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1), 0 4px 6px rgba(0, 0, 0, 0.2);
+  }
+</style>
+
 <div>
   {#each Object.keys(schema) as field}
     {#if typeof schema[field] === 'object'}
-      <div>{JSON.stringify(schema[field])}</div>
-      <svelte:self schema={schema[field]} {fields} />
+      <div class="sub">
+        <h4>Some model</h4>
+        <svelte:self schema={schema[field]} {fields} />
+      </div>
     {:else}
       <svelte:component
         this={component(field)}
@@ -50,5 +56,4 @@
       <p class="error-message">{$errors[field][0]}</p>
     {/if}
   {/each}
-  <button on:click={() => submit()}> Submit</button>
 </div>
