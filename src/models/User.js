@@ -42,6 +42,16 @@ class User extends Model {
             }
         };
     }
+
+    static get list() {
+        return {
+            name: 'name',
+            email: 'email',
+            username: 'username',
+            city: 'address.city',
+            address: 'address.street'
+        };
+    }
 }
 
 export default User;

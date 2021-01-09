@@ -1,5 +1,6 @@
 <script>
   import { beforeUpdate, onMount } from "svelte";
+  import { beforeUrlChange } from "@roxi/routify";
   import { list } from "../../../../stores";
   // import { mergeFields } from "../../../../lib/crud";
   // import { renderFields } from "../../../../lib/crud";
@@ -12,14 +13,22 @@
 
   // fix list when has related data
 
-  beforeUpdate(async () => {
-    let response = await api(model.settings.url);
+  // $beforeUrlChange(async (event, store) => {
+  //   let response = await api("http://localhost:3000/" + model.collection);
+  //   // if (formIsDirty) {
+  //   //   alert("Please save your changes before leaving.");
+  //   //   return false;
+  //   // } else return true;
+  //   $list = response.data;
+  // });
 
-    $list = response.data;
-  });
+  // onMount(async () => {
+  //   let response = await api("http://localhost:3000/" + model.collection);
+
+  // });
 
   // console.log("list", $list);
-  // $list = seeds[model.settings.collection];
+  // $list = seeds[model.collection];
 </script>
 
 <h3>CRUD index component</h3>

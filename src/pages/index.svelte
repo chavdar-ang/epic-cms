@@ -1,18 +1,20 @@
 <script>
     import { metatags } from '@roxi/routify'
+    import models from "../models";
 
-    import Model from "../lib/database/model/Model";
-    import User from "../models/User";
+    // import Model from "../lib/database/model/Model";
+    // import User from "../models/User";
     metatags.title = 'My Routify app'
     metatags.description = 'Description coming soon...'
 
-    let model = new Model;
-    let user = new User;
+    let user = new models.user;
+
+    // console.log('models', models);
 
     user.create();
     user.update();
     user.delete();
-    console.log(User.collection);
+    // console.log(models.User.collection);
 
 </script>
 
