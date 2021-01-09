@@ -1,5 +1,5 @@
 let settings = {
-    url: "https://jsonplaceholder.typicode.com/users",
+    url: "http://localhost:3000/users",
     name: "User",
     slug: "user",
     type: "document", // document or edge?
@@ -23,8 +23,13 @@ let schema = {
             lng: 'lng'
         }
     },
-    // phone: 'phone',
-    // website: 'website'
+    phones: [],
+    websites: [
+        {
+            title: 'title',
+            url: 'url'
+        }
+    ]
 };
 
 const list = {
@@ -112,6 +117,18 @@ const fields = {
         name: "Longitude",
         type: "input",
         style: "text",
+        rules: {
+            required: true,
+            min: 8,
+            max: 64,
+        }
+    },
+    phones: {
+        name: "Phones",
+        type: "input",
+        // here
+        // add type folder?
+        style: "list",
         rules: {
             required: true,
             min: 8,
