@@ -7,17 +7,15 @@
 
   // Components
   import IndexComponent from "./_components/IndexComponent.svelte";
-  import { beforeUpdate, onMount } from "svelte";
 
   $: model = models[$params.slug];
+  $: $params.slug && getData();
 
-  
-
-  // beforeUpdate(async () => {
-  //   let response = await api("http://localhost:3001/" + model.collection);
-  //   $list = response.data;
-  //   console.log('test');
-  // });
+  let getData = async () => {
+    let response = await api("http://localhost:3001/" + model.collection);
+    $list = response.data;
+    console.log("test");
+  };
 
   export let slug;
 </script>
@@ -25,6 +23,7 @@
 <h1>{model.name}</h1>
 
 <div>
-  <IndexComponent {model} />
-  <a href={`./${slug}/create`}>Create new {model.name}</a>
+    <IndexComponent {model} />
 </div>
+
+<a href={`./${slug}/create`}>Create new {model.name}</a>

@@ -32,18 +32,18 @@ class Model {
 
     create() {
         // If timestamps are true set created_at and updated_at
-        console.log(`New ${this.name.toLowerCase()} is created.`);
+        console.log(`New ${this.constructor.name.toLowerCase()} is created.`);
     }
 
     update() {
-        console.log(`${this.name} is updated.`);
+        console.log(`${this.constructor.name} is updated.`);
         // If timestamps are true update the updated_at field
         console.log(`Timestams are: ${this.timestamps ? 'on' : 'off'}`);
     }
 
     delete() {
         // Soft deletes and/or revisions here somewhere
-        console.log(`${this.name} with ${this.primaryKey}: <key> is deleted.`);
+        console.log(`${this.constructor.name} with ${this.primaryKey}: <key> is deleted.`);
     }
 }
 
