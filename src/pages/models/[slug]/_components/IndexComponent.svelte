@@ -1,7 +1,7 @@
 <script>
   import { beforeUpdate, onMount } from "svelte";
   import { beforeUrlChange } from "@roxi/routify";
-  import { list } from "../../../../stores";
+  // import { list } from "../../../../stores";
   // import { mergeFields } from "../../../../lib/crud";
   // import { renderFields } from "../../../../lib/crud";
   import api from "../../../../lib/api";
@@ -13,22 +13,28 @@
 
   // fix list when has related data
 
-  // $beforeUrlChange(async (event, store) => {
-  //   let response = await api("http://localhost:3000/" + model.collection);
-  //   // if (formIsDirty) {
-  //   //   alert("Please save your changes before leaving.");
-  //   //   return false;
-  //   // } else return true;
-  //   $list = response.data;
-  // });
+  let tempList = [];
+
+  $beforeUrlChange(async (event, store) => {
+    let response = await api("http://localhost:3001/" + model.collection);
+
+    console.log(store);
+
+    tempList = response.data;
+
+    // here
+    console.log('url change');
+
+    return true;
+  });
+
+  $: list = tempList;
 
   // onMount(async () => {
-  //   let response = await api("http://localhost:3000/" + model.collection);
-
+  //   let response = await api("http://localhost:3001/" + model.collection);
+  //   console.log(model.collection, response.data);
+  //   $list = response.data;
   // });
-
-  // console.log("list", $list);
-  // $list = seeds[model.collection];
 </script>
 
 <h3>CRUD index component</h3>
@@ -47,7 +53,7 @@
   </tr>
 
   <!-- Items -->
-  {#each $list as item}
+  {#each list as item}
     <Row {model} {item} />
   {/each}
 </table>

@@ -1,6 +1,6 @@
 <script>
   import { url, isActive } from "@roxi/routify";
-  import models from "../database/schema";
+  import models from "../models";
 </script>
 
 <style>

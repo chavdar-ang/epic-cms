@@ -11,24 +11,10 @@
 
   $: model = models[$params.slug];
 
-  $beforeUrlChange(async (event, store) => {
-    let response = await api("http://localhost:3000/" + model.collection);
-
-    $list = response.data;
-
-    // here
-    console.log('url change');
-
-    return true;
-  });
-
-  onMount(async () => {
-    let response = await api("http://localhost:3000/" + model.collection);
-    $list = response.data;
-  });
+  
 
   // beforeUpdate(async () => {
-  //   let response = await api("http://localhost:3000/" + model.collection);
+  //   let response = await api("http://localhost:3001/" + model.collection);
   //   $list = response.data;
   //   console.log('test');
   // });
