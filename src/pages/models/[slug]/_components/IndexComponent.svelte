@@ -1,10 +1,9 @@
 <script>
-  import { list } from "../../../../stores";
-  // import { mergeFields } from "../../../../lib/crud";
-  // import { renderFields } from "../../../../lib/crud";
+  import { model, list } from "../../../../stores";
   import Row from "./Row.svelte";
 
-  export let model;
+  const listedFields = $model.list;
+  // console.log("list", $list);
 </script>
 
 <h3>CRUD index component</h3>
@@ -15,7 +14,7 @@
 <table>
   <!-- Table heading -->
   <tr>
-    {#each Object.keys(model.list) as field}
+    {#each Object.keys(listedFields) as field}
       <th>{field}</th>
     {/each}
     <th>Edit</th>
@@ -24,6 +23,6 @@
 
   <!-- Items -->
   {#each $list as item}
-    <Row {model} {item} />
+    <Row {$model} {item} />
   {/each}
 </table>
