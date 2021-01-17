@@ -1,7 +1,7 @@
 import { readable, writable } from 'svelte/store';
 import models from "./database/schema";
 
-export const schema = readable(models);
+// export const schema = readable(models);
 
 export const model = writable([]);
 export const list = writable([]);

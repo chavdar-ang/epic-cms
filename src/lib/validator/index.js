@@ -1,5 +1,6 @@
 import { get } from "svelte/store";
-import { schema, inputs, errors } from "../../stores";
+import { inputs, errors } from "../../stores";
+import models from "../../models";
 
 const messages = {
     required: 'The :attribute field is required.',
@@ -12,7 +13,7 @@ const messages = {
 // ??
 let renderMessage = (slug, rule, value) => {
     let message = messages[rule].replace(':attribute', slug);
-    
+
     // Replace values if present -> :min, :max, etc.
     return message.replace(`:${rule}`, value);
 }
@@ -20,33 +21,37 @@ let renderMessage = (slug, rule, value) => {
 let validate = (model) => {
     // clean up errors
     errors.update(err => []);
-    const fields = get(schema)[model].fields;
+    // const fields = get(model);
+    const fields = models[model].schema;
+
+    console.log(fields);
+
 
     Object.keys(fields).map(field => {
         checkRules(model, field);
-    });    
+    });
 }
 
 // Rules methods - can be moved to rules.js
 let checkRules = (model, field) => {
     let input = get(inputs)[field];
 
-    const fields = get(schema)[model].fields;
-    
+    const fields = models[model].schema;
+
     let rules = fields[field]?.rules;
 
     if (!rules) return;
-    
+
     let fieldMessages = [];
-    
+
     Object.entries(rules).map(([rule, value]) => {
         if (!callRule(rule)(input, value)) {
             fieldMessages.push(renderMessage(field, rule, value));
         }
     });
-    
+
     if (fieldMessages.length > 0) {
-        errors.update(err => Object.assign(err, {[field]: fieldMessages}));
+        errors.update(err => Object.assign(err, { [field]: fieldMessages }));
     }
 }
 

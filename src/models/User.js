@@ -9,7 +9,7 @@ class User extends Model {
     static get schema() {
         return {
             name: {
-                //name: "Name", // By default shoud be capitalized key
+                name: "Name", // By default shoud be capitalized key
                 type: "input",
                 style: "text",
                 rules: {
@@ -38,6 +38,32 @@ class User extends Model {
                     required: true,
                     min: 3,
                     max: 32
+                }
+            },
+            image: {
+                name: "Image",
+                type: "folder",
+                fields: {
+                    thumbnail_url: {
+                        name: "Thumb",
+                        type: "input",
+                        style: "text",
+                        rules: {
+                            required: true,
+                            min: 3,
+                            max: 32
+                        }
+                    },
+                    medium_url: {
+                        name: "Medium",
+                        type: "input",
+                        style: "text",
+                        rules: {
+                            required: true,
+                            min: 3,
+                            max: 32
+                        }
+                    }
                 }
             }
         };

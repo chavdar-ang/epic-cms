@@ -23,4 +23,4 @@
 
 <IndexComponent />
 
-<a href={`./${slug}/create`}>Create new {$model.name}</a>
+<a href={`/models/${slug}/create`}>Create new {$model.name}</a>
