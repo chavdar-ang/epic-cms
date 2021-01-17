@@ -8,25 +8,24 @@
   // Components
   import Renderer from "./_components/Renderer.svelte";
 
-  $: model = models[$params.slug];
+  $model = models[$params.slug];
 
   onMount(async () => {
     $inputs = [];
-    console.log('inputs from store: ', $inputs);
   });
 
   let submit = () => {
-    validate(model.slug);
+    validate(slug);
+    console.log($inputs);
   };
 
-  // export let slug;
+  export let slug;
 </script>
-<div>
-  Create
-</div>
 
-<h2>{model.name} create</h2>
+<div>Create</div>
 
-<Renderer schema={model.schema} />
+<h2>{$model.name} create</h2>
+
+<Renderer schema={$model.schema}/>
 
 <button on:click={() => submit()}> Submit</button>

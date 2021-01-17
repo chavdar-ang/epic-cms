@@ -1,9 +1,8 @@
 <script>
-  import { errors } from "../../../../stores";
+  import { model, errors, inputs } from "../../../../stores";
   import formComponents from "../../../../components/form";
 
-  import { renderFields, flatten } from "../../../../lib/crud";
-  import { inputs, model } from "../../../../stores";
+  // import { renderFields, flatten } from "../../../../lib/crud";
 
   export let schema;
 
@@ -15,16 +14,12 @@
 
   // Return the related component
   let component = field => {
-    return formComponents[schema[field].type][schema[field].style];
+    return formComponents[field.type][field.style];
   };
 
   let renderField = field => {
-    return { slug: field, ...schema[field] };
+    return { slug: Object.keys(field), ...field };
   };
-
-  // fix this!
-  // let schema = flatten(model.schema, {});
-  // let fields = model.fields;
 </script>
 
 <div>
@@ -36,15 +31,14 @@
       </div>
     {:else}
       <svelte:component
-        this={component(field)}
-        field={renderField(field)}
+        this={component(schema[field])}
+        field={renderField(schema[field])}
         on:focus={() => onFocus(field)}
         bind:value={$inputs[field]}
       />
     {/if}
 
     {#if [field] in $errors}
-      {@debug $errors}
       <p class="error-message">{$errors[field][0]}</p>
     {/if}
   {/each}

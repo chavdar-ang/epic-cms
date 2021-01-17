@@ -18,29 +18,37 @@ let renderMessage = (slug, rule, value) => {
     return message.replace(`:${rule}`, value);
 }
 
+let getFields = (schema) => {
+    let res = {}
+
+    Object.entries(schema).filter(([key, val]) => {
+        // console.log(val);
+        if (val.type !== "folder") {
+            res[key] = val.rules;
+        } else {
+            res = { ...res, ...getFields(val.fields) }
+        }
+    });
+
+    return res;
+}
+
 let validate = (model) => {
+
     // clean up errors
     errors.update(err => []);
-    // const fields = get(model);
-    const fields = models[model].schema;
+    
+    const schema = models[model].schema;
+    const fields = getFields(schema);
 
-    console.log(fields);
-
-
-    Object.keys(fields).map(field => {
-        checkRules(model, field);
+    Object.entries(fields).map(([field, rules]) => {
+        checkRules(field, rules);
     });
 }
 
 // Rules methods - can be moved to rules.js
-let checkRules = (model, field) => {
+let checkRules = (field, rules) => {
     let input = get(inputs)[field];
-
-    const fields = models[model].schema;
-
-    let rules = fields[field]?.rules;
-
-    if (!rules) return;
 
     let fieldMessages = [];
 
