@@ -1,16 +1,17 @@
 <script>
+  import { model } from "../../../../stores";
   import _ from "lodash";
-  export let item, model;
+  export let item;
 
-  let list = model.list;
+  // let list = model.list;
 </script>
 
 <tr>
-  {#each Object.keys(list) as field}
-    <td>{_.get(item, list[field])}</td>
+  {#each Object.keys($model.list) as field}
+    <td>{_.get(item, $model.list[field])}</td>
   {/each}
   <td>
-    <a href="/models/{model.collection}/update/{item['id']}"> Edit</a>
+    <a href="/models/{$model.collection}/update/{item['id']}"> Edit</a>
   </td>
   <td>Delete</td>
 </tr>

@@ -7,18 +7,14 @@
   // Components
   import IndexComponent from "./_components/IndexComponent.svelte";
 
-  // $: getData($params.slug);
-  $: getData($params.slug);
+  $: $params.slug && load($params.slug);
 
-  let getData = async slug => {
+  let load = async slug => {
     $model = models[$params.slug];
     const response = await api("http://localhost:3000/" + $model.collection);
 
-    console.log("test", response);
     $list = response.data;
   };
-
-  // let promise = getData();
 
   export let slug;
 </script>
